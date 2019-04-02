@@ -178,9 +178,9 @@
     
     UIFont *font = self.textLabel.font;
     
-    CGRect frame = CGRectMake(0, self.textLabel.frame.origin.y, 0, self.textLabel.frame.size.height);
+    CGRect frame = CGRectMake(CGRectGetMinX(self.textLabel.frame), self.textLabel.frame.origin.y, 0, self.textLabel.frame.size.height);
     if (self.item.title.length > 0) {
-        frame.origin.x = [self.section maximumTitleWidthWithFont:font] + cellOffset + fieldOffset;
+        frame.origin.x = [self.section maximumTitleWidthWithFont:font] + MAX(CGRectGetMinX(frame), cellOffset) + fieldOffset;
     } else {
         frame.origin.x = cellOffset;
     }
